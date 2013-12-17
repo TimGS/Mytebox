@@ -392,14 +392,13 @@ Lytebox.prototype.updateLyteboxItems = function() {
 		anchors = (this.isFrame) ? anchors : document.getElementsByTagName('a');
 	var areas = (this.isFrame && window.parent.frames[window.name].document) ? window.parent.frames[window.name].document.getElementsByTagName('area') : document.getElementsByTagName('area');
 	var lyteLinks = this.combine(anchors, areas);
-	var myLink = relAttribute = revAttribute = classAttribute = dataOptions = dataTip = tipDecoration = tipStyle = tipImage = tipHtml = aSetting = sName = sValue = sExt = aUrl = null;
+	var myLink = relAttribute = revAttribute = dataOptions = dataTip = tipDecoration = tipStyle = tipImage = tipHtml = aSetting = sName = sValue = sExt = aUrl = null;
 	var bImage = bRelative = false;
 	for (var i = 0; i < lyteLinks.length; i++) {
 		myLink = lyteLinks[i];
 		relAttribute = String(myLink.getAttribute('rel'));
-		classAttribute = String(myLink.getAttribute(this.classAttribute));
 		if (myLink.getAttribute('href')) {
-			sType = classAttribute.match(/lytebox|lyteshow|lyteframe/i);
+			sType = myLink.className.match(/lytebox|lyteshow|lyteframe/i);
 			sType = this.isEmpty(sType) ? relAttribute.match(/lytebox|lyteshow|lyteframe/i) : sType;
 			dataOptions = String(myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
@@ -495,7 +494,7 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 			dataOptions = String(myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			if (myLink.getAttribute('href') && dataOptions.toLowerCase().match('group:' + this.group)) {
-				sType = String(myLink.getAttribute(this.classAttribute)).match(/lytebox|lyteshow|lyteframe/i);
+				sType = myLink.className.match(/lytebox|lyteshow|lyteframe/i);
 				sType = this.isEmpty(sType) ? myLink.getAttribute('rel').match(/lytebox|lyteshow|lyteframe/i) : sType;
 				aUrl = myLink.getAttribute('href').split('?');
 				sExt = aUrl[0].split('.').pop().toLowerCase();
