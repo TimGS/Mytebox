@@ -84,14 +84,6 @@ function Lytebox(bInitialize, aHttp) {
 		this.__afterEnd			= '';			// function to call after the viewer ends
 	
 		
-	/*** Configure Lytetip (tooltips) Options ***/
-		this.__changeTipCursor 	= true; 		// true to change the cursor to 'help', false to leave default (inhereted)
-		this.__tipDecoration	= 'dotted';		// controls the text-decoration (underline) of the tip link (dotted|solid|none)
-		this.__tipStyle 		= 'classic';	// sets the default tip style if none is specified via data-lyte-options. Possible values are classic, info, help, warning, error
-		this.__tipRelative		= true;			// if true, tips will be positioned relative to the element. if false, tips will be absolutely positioned on the page.
-												// if you are having issues with tooltips not being properly positioned, then set this to false
-
-
 	this.navTypeHash = new Object();
 	this.navTypeHash['Hover_by_type_1'] 	= true;
 	this.navTypeHash['Display_by_type_1'] 	= false;
@@ -425,66 +417,8 @@ Lytebox.prototype.updateLyteboxItems = function() {
 					myLink.onclick = function () { $lb.start(this, false, true); return false; }
 				}
 			}
-			dataTip = String(myLink.getAttribute('data-tip'));
-			dataTip = this.isEmpty(dataTip) ? myLink.getAttribute('title') : dataTip;
-			if (classAttribute.toLowerCase().match('lytetip') && !this.isEmpty(dataTip) && !this.tipsSet) {
-				if (this.__changeTipCursor) { myLink.style.cursor = 'help'; }
-				tipDecoration = this.__tipDecoration;
-				tipStyle = this.__tipStyle;
-				bRelative = this.__tipRelative;
-				if (!this.isEmpty(dataOptions)) {
-					aOptions = dataOptions.split(' ');
-					for (var j = 0; j < aOptions.length; j++) {
-						aSetting = aOptions[j].split(':');
-						sName = (aSetting.length > 1 ? this.trim(aSetting[0]).toLowerCase() : '');
-						sValue = (aSetting.length > 1 ? this.trim(aSetting[1]) : '');
-						switch(sName) {
-							case 'tipstyle':
-								tipStyle = (/classic|info|help|warning|error/.test(sValue) ? sValue : tipStyle); break;
-							case 'changetipcursor':
-								myLink.style.cursor = (/true|false/.test(sValue) ? (sValue == 'true' ? 'help' : '') : myLink.style.cursor); break;
-							case 'tiprelative':
-								bRelative = (/true|false/.test(sValue) ? (sValue == 'true') : bRelative); break;
-							case 'tipdecoration':
-								tipDecoration = (/dotted|solid|none/.test(sValue) ? sValue : tipDecoration); break;
-						}
-					}
-				}
-				if (tipDecoration != 'dotted') {
-					myLink.style.borderBottom = (tipDecoration == 'solid' ? '1px solid' : 'none');
-				}
-				switch(tipStyle) {
-					case 'info': tipStyle = 'lbCustom lbInfo'; tipImage = 'lbTipImg lbInfoImg'; break;
-					case 'help': tipStyle = 'lbCustom lbHelp'; tipImage = 'lbTipImg lbHelpImg'; break;
-					case 'warning': tipStyle = 'lbCustom lbWarning'; tipImage = 'lbTipImg lbWarningImg'; break;
-					case 'error': tipStyle = 'lbCustom lbError'; tipImage = 'lbTipImg lbErrorImg'; break;
-					case 'classic': tipStyle = 'lbClassic'; tipImage = ''; break;
-					default: tipStyle = 'lbClassic'; tipImage = '';
-				}
-				if ((this.ie && this.ieVersion <= 7) || (this.ieVersion == 8 && this.doc.compatMode == 'BackCompat')) {
-					tipImage = '';
-					if (tipStyle != 'lbClassic' && !this.isEmpty(tipStyle)) {
-						tipStyle += ' lbIEFix';
-					}
-				}
-				var aLinkPos = this.findPos(myLink);
-				if ((this.ie && (this.ieVersion <= 6 || this.doc.compatMode == 'BackCompat')) || bRelative) {
-					myLink.style.position = 'relative';
-				}
-				tipHtml = myLink.innerHTML;
-				myLink.innerHTML = '';
-				if ((this.ie && this.ieVersion <= 6 && this.doc.compatMode != 'BackCompat') || bRelative) {
-					myLink.innerHTML = tipHtml + '<span class="' + tipStyle + '">' + (tipImage ? '<div class="' + tipImage + '"></div>' : '') + dataTip + '</span>';
-				} else {
-					myLink.innerHTML = tipHtml + '<span class="' + tipStyle + '" style="left:'+aLinkPos[0]+'px;top:'+(aLinkPos[1]+aLinkPos[2])+'px;">' + (tipImage ? '<div class="' + tipImage + '"></div>' : '') + dataTip + '</span>';
-				}
-				if (classAttribute.match(/lytebox|lyteshow|lyteframe/i) == null) {
-					myLink.setAttribute('title','');
-				}
-			}
 		}
 	}
-	this.tipsSet = true;
 };
 Lytebox.prototype.launch = function(args) {
 	var sUrl = this.isEmpty(args.url) ? '' : String(args.url);
