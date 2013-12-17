@@ -1,0 +1,7 @@
+lytebox.min.js
+lytebox.min.js.gz
+
+.*
+*~
+
+!.gitignore
