@@ -126,8 +126,6 @@ function Lytebox(bInitialize, aHttp) {
 	this.ieVersion = this.ffVersion = this.chromeVersion = this.operaVersion = this.safariVersion = -1;
 	this.ie = this.ff = this.chrome = this.opera = this.safari = false;
 	this.setBrowserInfo();
-	this.classAttribute = (((this.ie && this.doc.compatMode == 'BackCompat') || (this.ie && this.ieVersion <= 7)) ? 'className' : 'class');
-	this.classAttribute = (this.ie && (document.documentMode == 8 || document.documentMode == 9)) ? 'class' : this.classAttribute;
 	this.isReady = false;
 	if (bInitialize) {
 		this.http = aHttp;
@@ -203,12 +201,12 @@ Lytebox.prototype.initialize = function() {
 	if (this.doc.$('lbLauncher')) { oBody.removeChild(this.doc.$('lbLauncher')); }
 	var oLauncher = this.doc.createElement('a');
 		oLauncher.setAttribute('id','lbLauncher');
-		oLauncher.setAttribute(this.classAttribute, 'lytebox');
+		oLauncher.className = 'lytebox';
 		oLauncher.style.display = 'none';
 		oBody.appendChild(oLauncher);
 	var oOverlay = this.doc.createElement('div');
 		oOverlay.setAttribute('id','lbOverlay');
-		oOverlay.setAttribute(this.classAttribute, this.theme);
+		oOverlay.className = this.theme;
 		if (this.ie && (this.ieVersion <= 6 || (this.ieVersion <= 9 && this.doc.compatMode == 'BackCompat'))) {
 			oOverlay.style.position = 'absolute';
 		}
@@ -220,7 +218,7 @@ Lytebox.prototype.initialize = function() {
 		oBody.appendChild(oLytebox);
 	var oOuterContainer = this.doc.createElement('div');
 		oOuterContainer.setAttribute('id','lbOuterContainer');
-		oOuterContainer.setAttribute(this.classAttribute, this.theme);
+		oOuterContainer.className = this.theme;
 		if (this.roundedBorder) {
 			oOuterContainer.style.MozBorderRadius = '8px';
 			oOuterContainer.style.borderRadius = '8px';
@@ -228,7 +226,7 @@ Lytebox.prototype.initialize = function() {
 		oLytebox.appendChild(oOuterContainer);
 	var oTopContainer = this.doc.createElement('div');
 		oTopContainer.setAttribute('id','lbTopContainer');
-		oTopContainer.setAttribute(this.classAttribute, this.theme);
+		oTopContainer.className = this.theme;
 		if (this.roundedBorder) {
 			oTopContainer.style.MozBorderRadius = '8px';
 			oTopContainer.style.borderRadius = '8px';
@@ -236,7 +234,7 @@ Lytebox.prototype.initialize = function() {
 		oOuterContainer.appendChild(oTopContainer);
 	var oTopData = this.doc.createElement('div');
 		oTopData.setAttribute('id','lbTopData');
-		oTopData.setAttribute(this.classAttribute, this.theme);
+		oTopData.className = this.theme;
 		oTopContainer.appendChild(oTopData);
 	var oTitleTop = this.doc.createElement('span');
 		oTitleTop.setAttribute('id','lbTitleTop');
@@ -250,39 +248,39 @@ Lytebox.prototype.initialize = function() {
 	var oCloseTop = this.doc.createElement('a');
 		oCloseTop.setAttribute('id','lbCloseTop');
 		oCloseTop.setAttribute('title', this.label['close']);
-		oCloseTop.setAttribute(this.classAttribute, this.theme);
+		oCloseTop.className = this.theme;
 		oCloseTop.setAttribute('href','javascript:void(0)');
 		oTopNav.appendChild(oCloseTop);
 	var oPrintTop = this.doc.createElement('a');
 		oPrintTop.setAttribute('id','lbPrintTop')
 		oPrintTop.setAttribute('title', this.label['print']);
-		oPrintTop.setAttribute(this.classAttribute, this.theme);
+		oPrintTop.className = this.theme;
 		oPrintTop.setAttribute('href','javascript:void(0)');
 		oTopNav.appendChild(oPrintTop);
 	var oNextTop = this.doc.createElement('a');
 		oNextTop.setAttribute('id','lbNextTop');
 		oNextTop.setAttribute('title', this.label['next']);
-		oNextTop.setAttribute(this.classAttribute, this.theme);
+		oNextTop.className = this.theme;
 		oNextTop.setAttribute('href','javascript:void(0)');
 		oTopNav.appendChild(oNextTop);
 	var oPauseTop = this.doc.createElement('a');
 		oPauseTop.setAttribute('id','lbPauseTop');
 		oPauseTop.setAttribute('title', this.label['pause']);
-		oPauseTop.setAttribute(this.classAttribute, this.theme);
+		oPauseTop.className = this.theme;
 		oPauseTop.setAttribute('href','javascript:void(0)');
 		oPauseTop.style.display = 'none';
 		oTopNav.appendChild(oPauseTop);
 	var oPlayTop = this.doc.createElement('a');
 		oPlayTop.setAttribute('id','lbPlayTop');
 		oPlayTop.setAttribute('title', this.label['play']);
-		oPlayTop.setAttribute(this.classAttribute, this.theme);
+		oPlayTop.className = this.theme;
 		oPlayTop.setAttribute('href','javascript:void(0)');
 		oPlayTop.style.display = 'none';
 		oTopNav.appendChild(oPlayTop);
 	var oPrevTop = this.doc.createElement('a');
 		oPrevTop.setAttribute('id','lbPrevTop');
 		oPrevTop.setAttribute('title', this.label['prev']);
-		oPrevTop.setAttribute(this.classAttribute, this.theme);
+		oPrevTop.className = this.theme;
 		oPrevTop.setAttribute('href','javascript:void(0)');
 		oTopNav.appendChild(oPrevTop);
 	var oIframeContainer = this.doc.createElement('div');
@@ -294,7 +292,7 @@ Lytebox.prototype.initialize = function() {
 		oIframe.setAttribute('name','lbIframe')
 		oIframe.setAttribute('frameBorder','0');
 		if (this.innerBorder) {
-			oIframe.setAttribute(this.classAttribute, this.theme);
+			oIframe.className = this.theme;
 		}
 		oIframe.style.display = 'none';
 		oIframeContainer.appendChild(oIframe);
@@ -304,16 +302,16 @@ Lytebox.prototype.initialize = function() {
 	var oLyteboxImage = this.doc.createElement('img');
 		oLyteboxImage.setAttribute('id','lbImage');
 		if (this.innerBorder) {
-			oLyteboxImage.setAttribute(this.classAttribute, this.theme);
+			oLyteboxImage.className = this.theme;
 		}
 		oImageContainer.appendChild(oLyteboxImage);
 	var oLoading = this.doc.createElement('div');
 		oLoading.setAttribute('id','lbLoading');
-		oLoading.setAttribute(this.classAttribute, this.theme);
+		oLoading.className = this.theme;
 		oOuterContainer.appendChild(oLoading);
 	var oBottomContainer = this.doc.createElement('div');
 		oBottomContainer.setAttribute('id','lbBottomContainer');
-		oBottomContainer.setAttribute(this.classAttribute, this.theme);
+		oBottomContainer.className = this.theme;
 		if (this.roundedBorder) {
 			oBottomContainer.style.MozBorderRadius = '8px';
 			oBottomContainer.style.borderRadius = '8px';
@@ -321,7 +319,7 @@ Lytebox.prototype.initialize = function() {
 		oOuterContainer.appendChild(oBottomContainer);
 	var oDetailsBottom = this.doc.createElement('div');
 		oDetailsBottom.setAttribute('id','lbBottomData');
-		oDetailsBottom.setAttribute(this.classAttribute, this.theme);
+		oDetailsBottom.className = this.theme;
 		oBottomContainer.appendChild(oDetailsBottom);
 	var oTitleBottom = this.doc.createElement('span');
 		oTitleBottom.setAttribute('id','lbTitleBottom');
@@ -341,52 +339,52 @@ Lytebox.prototype.initialize = function() {
 	var oPrevHov = this.doc.createElement('a');
 		oPrevHov.setAttribute('id','lbPrevHov');
 		oPrevHov.setAttribute('title', this.label['prev']);
-		oPrevHov.setAttribute(this.classAttribute, this.theme);
+		oPrevHov.className = this.theme;
 		oPrevHov.setAttribute('href','javascript:void(0)');
 		oHoverNav.appendChild(oPrevHov);
 	var oNextHov = this.doc.createElement('a');
 		oNextHov.setAttribute('id','lbNextHov');
 		oNextHov.setAttribute('title', this.label['next']);
-		oNextHov.setAttribute(this.classAttribute, this.theme);
+		oNextHov.className = this.theme;
 		oNextHov.setAttribute('href','javascript:void(0)');
 		oHoverNav.appendChild(oNextHov);
 	var oClose = this.doc.createElement('a');
 		oClose.setAttribute('id','lbClose');
 		oClose.setAttribute('title', this.label['close']);
-		oClose.setAttribute(this.classAttribute, this.theme);
+		oClose.className = this.theme;
 		oClose.setAttribute('href','javascript:void(0)');
 		oBottomNav.appendChild(oClose);
 	var oPrint = this.doc.createElement('a');
 		oPrint.setAttribute('id','lbPrint');
 		oPrint.setAttribute('title', this.label['print']);
-		oPrint.setAttribute(this.classAttribute, this.theme);
+		oPrint.className = this.theme;
 		oPrint.setAttribute('href','javascript:void(0)');
 		oPrint.style.display = 'none';
 		oBottomNav.appendChild(oPrint);
 	var oNext = this.doc.createElement('a');
 		oNext.setAttribute('id','lbNext');
 		oNext.setAttribute('title', this.label['next']);
-		oNext.setAttribute(this.classAttribute, this.theme);
+		oNext.className = this.theme;
 		oNext.setAttribute('href','javascript:void(0)');
 		oBottomNav.appendChild(oNext);
 	var oPause = this.doc.createElement('a');
 		oPause.setAttribute('id','lbPause');
 		oPause.setAttribute('title', this.label['pause']);
-		oPause.setAttribute(this.classAttribute, this.theme);
+		oPause.className = this.theme;
 		oPause.setAttribute('href','javascript:void(0)');
 		oPause.style.display = 'none';
 		oBottomNav.appendChild(oPause);
 	var oPlay = this.doc.createElement('a');
 		oPlay.setAttribute('id','lbPlay');
 		oPlay.setAttribute('title', this.label['play']);
-		oPlay.setAttribute(this.classAttribute, this.theme);
+		oPlay.className = this.theme;
 		oPlay.setAttribute('href','javascript:void(0)');
 		oPlay.style.display = 'none';
 		oBottomNav.appendChild(oPlay);
 	var oPrev = this.doc.createElement('a');
 		oPrev.setAttribute('id','lbPrev');
 		oPrev.setAttribute('title', this.label['prev']);
-		oPrev.setAttribute(this.classAttribute, this.theme);
+		oPrev.className = this.theme;
 		oPrev.setAttribute('href','javascript:void(0)');
 		oBottomNav.appendChild(oPrev);
 	var iframes = (this.isFrame && window.parent.frames[window.name].document) ? window.parent.frames[window.name].document.getElementsByTagName('iframe') : document.getElementsByTagName('iframe');
@@ -651,7 +649,7 @@ Lytebox.prototype.changeContent = function(iContentNum) {
 	if (!this.outerBorder) {
 		this.doc.$('lbOuterContainer').style.border = 'none';
 	} else {
-		this.doc.$('lbOuterContainer').setAttribute(this.classAttribute, this.theme);
+		this.doc.$('lbOuterContainer').className = this.theme;
 	}
 	if (this.forceCloseClick) {
 		this.doc.$('lbOverlay').onclick = '';
@@ -686,7 +684,7 @@ Lytebox.prototype.changeContent = function(iContentNum) {
 	if (!this.outerBorder) {
 		this.doc.$('lbOuterContainer').style.border = 'none';
 	} else {
-		this.doc.$('lbOuterContainer').setAttribute(this.classAttribute, this.theme);
+		this.doc.$('lbOuterContainer').className = this.theme;
 	}
 	var iDecreaseMargin = 10;
 	if (this.titleTop || this.navTop) {
@@ -1009,7 +1007,7 @@ Lytebox.prototype.updateNav = function() {
 	if (this.isSlideshow) {
 		if (this.contentNum != 0) {
 			if (this.navTypeHash['Display_by_type_' + this.navType] && this.showNavigation) {
-				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme);
+				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme;
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').style.display = '';
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() {
 					if ($lb.pauseOnPrevClick) { $lb.togglePlayPause($lb.navTop ? 'lbPauseTop' : 'lbPause', $lb.navTop ? 'lbPlayTop' : 'lbPlay'); }
@@ -1026,13 +1024,13 @@ Lytebox.prototype.updateNav = function() {
 			}
 		} else {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) {
-				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme + 'Off');
+				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme + 'Off';
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() { return false; }
 			}
 		}
 		if (this.contentNum != (this.slideArray.length - 1) && this.showNavigation) {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) {
-				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme);
+				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme;
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').style.display = '';
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() {
 					if ($lb.pauseOnNextClick) { $lb.togglePlayPause($lb.navTop ? 'lbPauseTop' : 'lbPause', $lb.navTop ? 'lbPlayTop' : 'lbPlay'); }
@@ -1049,35 +1047,35 @@ Lytebox.prototype.updateNav = function() {
 			}
 		} else {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) { 
-				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme + 'Off');
+				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme + 'Off';
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() { return false; }
 			}
 		}
 	} else if (this.isLyteframe) {
 		if(this.contentNum != 0) {
-			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme);
+			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme;
 			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').style.display = '';
 			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() {
 				$lb.changeContent($lb.contentNum - 1); return false;
 			}
 		} else {
-			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme + 'Off');
+			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme + 'Off';
 			this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() { return false; }
 		}
 		if(this.contentNum != (this.frameArray.length - 1)) {
-			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme);
+			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme;
 			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').style.display = '';
 			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() {
 				$lb.changeContent($lb.contentNum + 1); return false;
 			}
 		} else {
-			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme + 'Off');
+			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme + 'Off';
 			this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() { return false; }
 		}
 	} else {
 		if(this.contentNum != 0) {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) {
-				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme);
+				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme;
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').style.display = '';
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() {
 					$lb.changeContent($lb.contentNum - 1); return false;
@@ -1092,13 +1090,13 @@ Lytebox.prototype.updateNav = function() {
 			}
 		} else {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) {
-				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').setAttribute(this.classAttribute, this.theme + 'Off');
+				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').className = this.theme + 'Off';
 				this.doc.$(this.navTop ? 'lbPrevTop' : 'lbPrev').onclick = function() { return false; }
 			}
 		}
 		if(this.contentNum != (this.imageArray.length - 1)) {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) {
-				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme);
+				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme;
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').style.display = '';
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() {
 					$lb.changeContent($lb.contentNum + 1); return false;
@@ -1113,7 +1111,7 @@ Lytebox.prototype.updateNav = function() {
 			}
 		} else {
 			if (this.navTypeHash['Display_by_type_' + this.navType]) { 
-				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').setAttribute(this.classAttribute, this.theme + 'Off');
+				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').className = this.theme + 'Off';
 				this.doc.$(this.navTop ? 'lbNextTop' : 'lbNext').onclick = function() { return false; }
 			}
 		}
