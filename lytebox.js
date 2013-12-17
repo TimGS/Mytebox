@@ -208,177 +208,50 @@ Lytebox.prototype.initialize = function() {
 		oLytebox.setAttribute('id','lbMain');
 		oLytebox.style.display = 'none';
 		oBody.appendChild(oLytebox);
-	var oOuterContainer = this.doc.createElement('div');
-		oOuterContainer.setAttribute('id','lbOuterContainer');
-		oOuterContainer.className = this.theme;
-		if (this.roundedBorder) {
-			oOuterContainer.style.MozBorderRadius = '8px';
-			oOuterContainer.style.borderRadius = '8px';
-		}
-		oLytebox.appendChild(oOuterContainer);
-	var oTopContainer = this.doc.createElement('div');
-		oTopContainer.setAttribute('id','lbTopContainer');
-		oTopContainer.className = this.theme;
-		if (this.roundedBorder) {
-			oTopContainer.style.MozBorderRadius = '8px';
-			oTopContainer.style.borderRadius = '8px';
-		}
-		oOuterContainer.appendChild(oTopContainer);
-	var oTopData = this.doc.createElement('div');
-		oTopData.setAttribute('id','lbTopData');
-		oTopData.className = this.theme;
-		oTopContainer.appendChild(oTopData);
-	var oTitleTop = this.doc.createElement('span');
-		oTitleTop.setAttribute('id','lbTitleTop');
-		oTopData.appendChild(oTitleTop);
-	var oNumTop = this.doc.createElement('span');
-		oNumTop.setAttribute('id','lbNumTop');
-		oTopData.appendChild(oNumTop);
-	var oTopNav = this.doc.createElement('div');
-		oTopNav.setAttribute('id','lbTopNav');
-		oTopContainer.appendChild(oTopNav);
-	var oCloseTop = this.doc.createElement('a');
-		oCloseTop.setAttribute('id','lbCloseTop');
-		oCloseTop.setAttribute('title', this.label['close']);
-		oCloseTop.className = this.theme;
-		oCloseTop.setAttribute('href','javascript:void(0)');
-		oTopNav.appendChild(oCloseTop);
-	var oPrintTop = this.doc.createElement('a');
-		oPrintTop.setAttribute('id','lbPrintTop')
-		oPrintTop.setAttribute('title', this.label['print']);
-		oPrintTop.className = this.theme;
-		oPrintTop.setAttribute('href','javascript:void(0)');
-		oTopNav.appendChild(oPrintTop);
-	var oNextTop = this.doc.createElement('a');
-		oNextTop.setAttribute('id','lbNextTop');
-		oNextTop.setAttribute('title', this.label['next']);
-		oNextTop.className = this.theme;
-		oNextTop.setAttribute('href','javascript:void(0)');
-		oTopNav.appendChild(oNextTop);
-	var oPauseTop = this.doc.createElement('a');
-		oPauseTop.setAttribute('id','lbPauseTop');
-		oPauseTop.setAttribute('title', this.label['pause']);
-		oPauseTop.className = this.theme;
-		oPauseTop.setAttribute('href','javascript:void(0)');
-		oPauseTop.style.display = 'none';
-		oTopNav.appendChild(oPauseTop);
-	var oPlayTop = this.doc.createElement('a');
-		oPlayTop.setAttribute('id','lbPlayTop');
-		oPlayTop.setAttribute('title', this.label['play']);
-		oPlayTop.className = this.theme;
-		oPlayTop.setAttribute('href','javascript:void(0)');
-		oPlayTop.style.display = 'none';
-		oTopNav.appendChild(oPlayTop);
-	var oPrevTop = this.doc.createElement('a');
-		oPrevTop.setAttribute('id','lbPrevTop');
-		oPrevTop.setAttribute('title', this.label['prev']);
-		oPrevTop.className = this.theme;
-		oPrevTop.setAttribute('href','javascript:void(0)');
-		oTopNav.appendChild(oPrevTop);
-	var oIframeContainer = this.doc.createElement('div');
-		oIframeContainer.setAttribute('id','lbIframeContainer');
-		oIframeContainer.style.display = 'none';
-		oOuterContainer.appendChild(oIframeContainer);
-	var oIframe = this.doc.createElement('iframe');
-		oIframe.setAttribute('id','lbIframe');
-		oIframe.setAttribute('name','lbIframe')
-		oIframe.setAttribute('frameBorder','0');
-		if (this.innerBorder) {
-			oIframe.className = this.theme;
-		}
-		oIframe.style.display = 'none';
-		oIframeContainer.appendChild(oIframe);
-	var oImageContainer = this.doc.createElement('div');
-		oImageContainer.setAttribute('id','lbImageContainer');
-		oOuterContainer.appendChild(oImageContainer);
-	var oLyteboxImage = this.doc.createElement('img');
-		oLyteboxImage.setAttribute('id','lbImage');
-		if (this.innerBorder) {
-			oLyteboxImage.className = this.theme;
-		}
-		oImageContainer.appendChild(oLyteboxImage);
-	var oLoading = this.doc.createElement('div');
-		oLoading.setAttribute('id','lbLoading');
-		oLoading.className = this.theme;
-		oOuterContainer.appendChild(oLoading);
-	var oBottomContainer = this.doc.createElement('div');
-		oBottomContainer.setAttribute('id','lbBottomContainer');
-		oBottomContainer.className = this.theme;
-		if (this.roundedBorder) {
-			oBottomContainer.style.MozBorderRadius = '8px';
-			oBottomContainer.style.borderRadius = '8px';
-		}
-		oOuterContainer.appendChild(oBottomContainer);
-	var oDetailsBottom = this.doc.createElement('div');
-		oDetailsBottom.setAttribute('id','lbBottomData');
-		oDetailsBottom.className = this.theme;
-		oBottomContainer.appendChild(oDetailsBottom);
-	var oTitleBottom = this.doc.createElement('span');
-		oTitleBottom.setAttribute('id','lbTitleBottom');
-		oDetailsBottom.appendChild(oTitleBottom);
-	var oNumBottom = this.doc.createElement('span');
-		oNumBottom.setAttribute('id','lbNumBottom');
-		oDetailsBottom.appendChild(oNumBottom);
-	var oDescBottom = this.doc.createElement('span');
-		oDescBottom.setAttribute('id','lbDescBottom');
-		oDetailsBottom.appendChild(oDescBottom);
-	var oHoverNav = this.doc.createElement('div');
-		oHoverNav.setAttribute('id','lbHoverNav');
-		oImageContainer.appendChild(oHoverNav);
-	var oBottomNav = this.doc.createElement('div');
-		oBottomNav.setAttribute('id','lbBottomNav');
-		oBottomContainer.appendChild(oBottomNav);
-	var oPrevHov = this.doc.createElement('a');
-		oPrevHov.setAttribute('id','lbPrevHov');
-		oPrevHov.setAttribute('title', this.label['prev']);
-		oPrevHov.className = this.theme;
-		oPrevHov.setAttribute('href','javascript:void(0)');
-		oHoverNav.appendChild(oPrevHov);
-	var oNextHov = this.doc.createElement('a');
-		oNextHov.setAttribute('id','lbNextHov');
-		oNextHov.setAttribute('title', this.label['next']);
-		oNextHov.className = this.theme;
-		oNextHov.setAttribute('href','javascript:void(0)');
-		oHoverNav.appendChild(oNextHov);
-	var oClose = this.doc.createElement('a');
-		oClose.setAttribute('id','lbClose');
-		oClose.setAttribute('title', this.label['close']);
-		oClose.className = this.theme;
-		oClose.setAttribute('href','javascript:void(0)');
-		oBottomNav.appendChild(oClose);
-	var oPrint = this.doc.createElement('a');
-		oPrint.setAttribute('id','lbPrint');
-		oPrint.setAttribute('title', this.label['print']);
-		oPrint.className = this.theme;
-		oPrint.setAttribute('href','javascript:void(0)');
-		oPrint.style.display = 'none';
-		oBottomNav.appendChild(oPrint);
-	var oNext = this.doc.createElement('a');
-		oNext.setAttribute('id','lbNext');
-		oNext.setAttribute('title', this.label['next']);
-		oNext.className = this.theme;
-		oNext.setAttribute('href','javascript:void(0)');
-		oBottomNav.appendChild(oNext);
-	var oPause = this.doc.createElement('a');
-		oPause.setAttribute('id','lbPause');
-		oPause.setAttribute('title', this.label['pause']);
-		oPause.className = this.theme;
-		oPause.setAttribute('href','javascript:void(0)');
-		oPause.style.display = 'none';
-		oBottomNav.appendChild(oPause);
-	var oPlay = this.doc.createElement('a');
-		oPlay.setAttribute('id','lbPlay');
-		oPlay.setAttribute('title', this.label['play']);
-		oPlay.className = this.theme;
-		oPlay.setAttribute('href','javascript:void(0)');
-		oPlay.style.display = 'none';
-		oBottomNav.appendChild(oPlay);
-	var oPrev = this.doc.createElement('a');
-		oPrev.setAttribute('id','lbPrev');
-		oPrev.setAttribute('title', this.label['prev']);
-		oPrev.className = this.theme;
-		oPrev.setAttribute('href','javascript:void(0)');
-		oBottomNav.appendChild(oPrev);
+		oLytebox.innerHTML =
+		'<div id="lbOuterContainer" class="'+this.theme+'"'+(this.roundedBorder ? ' style="border-radius: 8px"' : '')+'>\
+		    <div id="lbTopContainer" class="'+this.theme+'"'+(this.roundedBorder ? ' style="border-radius: 8px"' : '')+'>\
+		        <div id="lbTopData" class="'+this.theme+'">\
+		            <span id="lbTitleTop"></span>\
+		            <span id="lbNumTop"></span>\
+		        </div>\
+		        <div id="lbTopNav">\
+		            <a id="lbCloseTop" title="'+this.label['close']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+		            <a id="lbPrintTop" title="'+this.label['print']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+		            <a id="lbNextTop" title="'+this.label['next']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+		            <a id="lbPauseTop" title="'+this.label['pause']+'" class="'+this.theme+'" href="javascript:void(0)" style="display: none"></a>\
+		            <a id="lbPlayTop" title="'+this.label['play']+'" class="'+this.theme+'" href="javascript:void(0)" style="display: none"></a>\
+		            <a id="lbPrevTop" title="'+this.label['prev']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+		        </div>\
+		    </div>\
+		    <div id="lbIframeContainer" style="display: none">\
+		        <iframe id="lbIframe" name="lbIframe" frameborder="0"'+(this.innerBorder ? ' class="'+this.theme+'"' : '')+' style="display: none"></iframe>\
+		    </div>\
+            <div id="lbImageContainer">\
+                <img id="lbImage"'+(this.innerBorder ? ' class="'+this.theme+'"' : '')+'/>\
+                <div id="lbHoverNav">\
+                    <a id="lbPrevHov" title="'+this.label['prev']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+                    <a id="lbNextHov" title="'+this.label['next']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+                </div>\
+            </div>\
+            <div id="lbLoading" class="'+this.theme+'"></div>\
+            <div id="lbBottomContainer" class="'+this.theme+'"'+(this.roundedBorder ? ' style="border-radius: 8px"' : '')+'>\
+                <div id="lbBottomData" class="'+this.theme+'">\
+                    <span id="lbTitleBottom"></span>\
+                    <span id="lbNumBottom"></span>\
+                    <span id="lbDescBottom"></span>\
+                </div>\
+                <div id="lbBottomNav">\
+                    <a id="lbClose" title="'+this.label['close']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+                    <a id="lbPrint" title="'+this.label['print']+'" class="'+this.theme+'" href="javascript:void(0)" style="display: none"></a>\
+                    <a id="lbNext" title="'+this.label['next']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+                    <a id="lbPause" title="'+this.label['pause']+'" class="'+this.theme+'" href="javascript:void(0)" style="display: none"></a>\
+                    <a id="lbPlay" title="'+this.label['play']+'" class="'+this.theme+'" href="javascript:void(0)" style="display: none"></a>\
+                    <a id="lbPrev" title="'+this.label['prev']+'" class="'+this.theme+'" href="javascript:void(0)"></a>\
+                </div>\
+            </div>\
+		</div>';
+
 	var iframes = (this.isFrame && window.parent.frames[window.name].document) ? window.parent.frames[window.name].document.getElementsByTagName('iframe') : document.getElementsByTagName('iframe');
 	for (var i = 0; i < iframes.length; i++) {
 		if (/youtube/i.test(iframes[i].src)) {
