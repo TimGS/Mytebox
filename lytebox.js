@@ -458,7 +458,6 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 			if (!callback(this.args)) { return; }
 		}
 	}
-	if (this.ie && this.ieVersion <= 6) { this.toggleSelects('hide'); }
 	if (this.hideObjects) { this.toggleObjects('hide'); }
 	if (this.isFrame && window.parent.frames[window.name].document) {
 		window.parent.$lb.printId = (this.isLyteframe ? 'lbIframe' : 'lbImage');
@@ -804,7 +803,7 @@ Lytebox.prototype.showContent = function() {
 				this.slideshowIDArray[this.slideshowIDCount++] = setTimeout("$lb.changeContent("+(this.contentNum+1)+")", this.slideInterval);
 			}
 		}
-		this.doc.$('lbHoverNav').style.display = (this.ieVersion != 6 && this.showNavigation && this.navTypeHash['Hover_by_type_' + this.navType] ? '' : 'none');
+		this.doc.$('lbHoverNav').style.display = (this.showNavigation && this.navTypeHash['Hover_by_type_' + this.navType] ? '' : 'none');
 		this.doc.$('lbCloseTop').style.display = (this.showClose && this.navTop ? '' : 'none');
 		this.doc.$('lbClose').style.display = (this.showClose && !this.navTop ? '' : 'none');
 		this.doc.$('lbBottomData').style.display = (this.showDetails ? '' : 'none');
@@ -817,7 +816,7 @@ Lytebox.prototype.showContent = function() {
 		this.doc.$('lbNextTop').style.display = (this.navTop && this.showNavigation && this.navTypeHash['Display_by_type_' + this.navType] ? '' : 'none');
 		this.doc.$('lbNext').style.display = (!this.navTop && this.showNavigation && this.navTypeHash['Display_by_type_' + this.navType] ? '' : 'none');
 	} else {
-		this.doc.$('lbHoverNav').style.display = (this.ieVersion != 6 && this.navTypeHash['Hover_by_type_' + this.navType] && !this.isLyteframe ? '' : 'none');
+		this.doc.$('lbHoverNav').style.display = (this.navTypeHash['Hover_by_type_' + this.navType] && !this.isLyteframe ? '' : 'none');
 		if ((this.navTypeHash['Display_by_type_' + this.navType] && !this.isLyteframe && this.imageArray.length > 1) || (this.frameArray.length > 1 && this.isLyteframe)) {
 			this.doc.$('lbPrevTop').style.display = (this.navTop ? '' : 'none');
 			this.doc.$('lbPrev').style.display = (!this.navTop ? '' : 'none');
