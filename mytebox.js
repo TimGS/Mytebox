@@ -1,10 +1,10 @@
 //**************************************************************************************************/
-//	Lytebox v5.5
+//  Mytebox v1 beta
 //
-//	 Author: Markus F. Hay
+//  Author: Tim Spencer, based on Lytebox by Markus F. Hay
 //  Website: http://lytebox.com  (http://dolem.com/lytebox)
-//	   Date: January 26, 2012
-//	License: Creative Commons Attribution 3.0 License (http://creativecommons.org/licenses/by/3.0/)
+//  Date: December 2013
+//  License: Creative Commons Attribution 3.0 License (http://creativecommons.org/licenses/by/3.0/)
 //**************************************************************************************************/
 function Lytebox(bInitialize, aHttp) {
 	/*** Language Configuration ***/
