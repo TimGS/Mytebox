@@ -271,8 +271,8 @@ Lytebox.prototype.updateLyteboxItems = function() {
 		myLink = lyteLinks[i];
 		relAttribute = String(myLink.getAttribute('rel'));
 		if (myLink.getAttribute('href')) {
-			sType = myLink.className.match(/lytebox|lyteshow|lyteframe/i);
-			sType = this.isEmpty(sType) ? relAttribute.match(/lytebox|lyteshow|lyteframe/i) : sType;
+			sType = myLink.className.match(/mytebox|lytebox|lyteshow|lyteframe/i);
+			sType = this.isEmpty(sType) ? relAttribute.match(/mytebox|lytebox|lyteshow|lyteframe/i) : sType;
 			dataOptions = String(myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			aUrl = myLink.getAttribute('href').split('?');
@@ -367,8 +367,8 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 			dataOptions = String(myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			if (myLink.getAttribute('href') && dataOptions.toLowerCase().match('group:' + this.group)) {
-				sType = myLink.className.match(/lytebox|lyteshow|lyteframe/i);
-				sType = this.isEmpty(sType) ? myLink.getAttribute('rel').match(/lytebox|lyteshow|lyteframe/i) : sType;
+				sType = myLink.className.match(/mytebox|lytebox|lyteshow|lyteframe/i);
+				sType = this.isEmpty(sType) ? myLink.getAttribute('rel').match(/mytebox|lytebox|lyteshow|lyteframe/i) : sType;
 				aUrl = myLink.getAttribute('href').split('?');
 				sExt = aUrl[0].split('.').pop().toLowerCase();
 				bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp');
