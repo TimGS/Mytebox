@@ -277,7 +277,7 @@ Lytebox.prototype.updateLyteboxItems = function() {
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			aUrl = myLink.getAttribute('href').split('?');
 			sExt = aUrl[0].split('.').pop().toLowerCase();
-			bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp');
+			bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp' || aUrl[0].match('phpThumb'));
 			if (sType && sType.length >= 1) {
 				if (this.isMobile() && /youtube/i.test(myLink.getAttribute('href'))) {
 					myLink.target = '_blank';
@@ -309,7 +309,7 @@ Lytebox.prototype.launch = function(args) {
 	}
 	var aUrl = sUrl.split('?');
 	var sExt = aUrl[0].split('.').pop().toLowerCase();
-	var bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp');
+	var bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp' || aUrl[0].match('phpThumb'));
 	var oLauncher = this.doc.$('lbLauncher');
 		oLauncher.setAttribute('href', sUrl);
 		oLauncher.setAttribute('data-myte-options', sOptions);
@@ -371,7 +371,7 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 				sType = this.isEmpty(sType) ? myLink.getAttribute('rel').match(/mytebox|lytebox|lyteshow|lyteframe/i) : sType;
 				aUrl = myLink.getAttribute('href').split('?');
 				sExt = aUrl[0].split('.').pop().toLowerCase();
-				bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp');
+				bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp' || aUrl[0].match('phpThumb'));
 				if (sType && sType.length >= 1) {
 					if (bImage && (dataOptions.match(/slide:true/i) || sType[0].toLowerCase() == 'lyteshow')) {
 						this.slideArray.push(new Array(myLink.getAttribute('href'), (!this.isEmpty(myLink.getAttribute('data-title')) ? myLink.getAttribute('data-title') : myLink.getAttribute('title')), myLink.getAttribute('data-description'), dataOptions));
