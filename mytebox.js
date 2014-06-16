@@ -33,7 +33,7 @@ function Lytebox(bInitialize, aHttp) {
 		this.borderSize			= 12;			// if you adjust the padding in the CSS, you will need to update this variable -- otherwise, leave this alone...
 		this.appendQS			= false;		// if true, will append request_from=lytebox to the QS. Use this with caution as it may cause pages to not render
 		this.fixedPosition		= this.isMobile() ? false : true;	// if true, viewer will remain in a fixed position, otherwise page scrolling will be allowed
-		this.inherit			= true;			// controls whether or not data-lyte-options are inherited from the first link in a grouped set
+		this.inherit			= true;			// controls whether or not data-myte-options are inherited from the first link in a grouped set
 		
 		this.__hideObjects		= true;			// controls whether or not objects (such as Flash, Java, etc.) should be hidden when the viewer opens
 		this.__autoResize		= true;			// controls whether or not images should be resized if larger than the browser window dimensions
@@ -273,7 +273,7 @@ Lytebox.prototype.updateLyteboxItems = function() {
 		if (myLink.getAttribute('href')) {
 			sType = myLink.className.match(/mytebox|lytebox|lyteshow|lyteframe/i);
 			sType = this.isEmpty(sType) ? relAttribute.match(/mytebox|lytebox|lyteshow|lyteframe/i) : sType;
-			dataOptions = String(myLink.getAttribute('data-lyte-options'));
+			dataOptions = String(myLink.getAttribute('data-myte-options') || myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			aUrl = myLink.getAttribute('href').split('?');
 			sExt = aUrl[0].split('.').pop().toLowerCase();
@@ -312,14 +312,14 @@ Lytebox.prototype.launch = function(args) {
 	var bImage = (sExt == 'png' || sExt == 'jpg' || sExt == 'jpeg' || sExt == 'gif' || sExt == 'bmp');
 	var oLauncher = this.doc.$('lbLauncher');
 		oLauncher.setAttribute('href', sUrl);
-		oLauncher.setAttribute('data-lyte-options', sOptions);
+		oLauncher.setAttribute('data-myte-options', sOptions);
 		oLauncher.setAttribute('data-title', sTitle);
 		oLauncher.setAttribute('data-description', sDesc);
 	this.updateLyteboxItems();
 	this.start(oLauncher, bSlideshow, (bImage ? false : true));
 };
 Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
-	var dataOptions = String(oLink.getAttribute('data-lyte-options'));
+	var dataOptions = String(oLink.getAttribute('data-myte-options') || oLink.getAttribute('data-lyte-options'));
 		dataOptions = this.isEmpty(dataOptions) ? String(oLink.getAttribute('rev')) : dataOptions;
 	this.setOptions(dataOptions);
 	this.isSlideshow = (bSlideshow ? true : false);
@@ -354,7 +354,7 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 	this.slideArray = [];
 	this.slideNum = 0;
 	if (this.isEmpty(this.group)) {
-		dataOptions = String(oLink.getAttribute('data-lyte-options'));
+		dataOptions = String(oLink.getAttribute('data-myte-options') || oLink.getAttribute('data-lyte-options'));
 		dataOptions = this.isEmpty(dataOptions) ? String(oLink.getAttribute('rev')) : dataOptions;
 		if (this.isLyteframe) {			
 			this.frameArray.push(new Array(oLink.getAttribute('href'), (!this.isEmpty(oLink.getAttribute('data-title')) ? oLink.getAttribute('data-title') : oLink.getAttribute('title')), oLink.getAttribute('data-description'), dataOptions));
@@ -364,7 +364,7 @@ Lytebox.prototype.start = function(oLink, bSlideshow, bFrame) {
 	} else {
 		for (var i = 0; i < lyteLinks.length; i++) {
 			var myLink = lyteLinks[i];
-			dataOptions = String(myLink.getAttribute('data-lyte-options'));
+			dataOptions = String(myLink.getAttribute('data-myte-options') || myLink.getAttribute('data-lyte-options'));
 			dataOptions = this.isEmpty(dataOptions) ? String(myLink.getAttribute('rev')) : dataOptions;
 			if (myLink.getAttribute('href') && dataOptions.toLowerCase().match('group:' + this.group)) {
 				sType = myLink.className.match(/mytebox|lytebox|lyteshow|lyteframe/i);
